@@ -1,0 +1,6 @@
+# Robots.txt for MONIX Software Solutions
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://monixsoftwaresolution.tech/sitemap.xml

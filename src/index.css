@@ -1,0 +1,388 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700;800;900&family=Mukta+Malar:wght@600;700;800&display=swap');
+
+/* Tamil Mode Global Typography Overrides */
+body.lang-ta {
+  font-family: 'Noto Sans Tamil', 'Mukta Malar', 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.5;
+}
+
+body.lang-ta h1,
+body.lang-ta h2,
+body.lang-ta h3,
+body.lang-ta .font-cinzel,
+body.lang-ta .font-playfair,
+body.lang-ta .hero-title {
+  font-family: 'Noto Sans Tamil', 'Mukta Malar', sans-serif !important;
+  font-weight: 800;
+  line-height: 1.35 !important;
+}
+
+body.lang-ta .hero-kicker {
+  font-family: 'Noto Sans Tamil', sans-serif !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+body.lang-ta .hero-subtitle {
+  font-family: 'Noto Sans Tamil', sans-serif !important;
+  line-height: 1.6;
+}
+
+@layer utilities {
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #B8860B 0%, #D4AF37 35%, #FFD700 60%, #B8860B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gold-light {
+    background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Metallic Gold Border */
+  .border-gold-gradient {
+    border-image: linear-gradient(135deg, #D4AF37, #FFF5C0, #B8860B) 1;
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #F5D061 50%, #C59B27 100%);
+  }
+
+  .bg-gold-dark {
+    background: linear-gradient(135deg, #1A1814 0%, #2A2418 100%);
+  }
+
+  /* Glassmorphism */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    box-shadow: 0 10px 30px -10px rgba(184, 134, 11, 0.08);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.2);
+  }
+
+  .glass-card-dark {
+    background: rgba(20, 18, 14, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Gold Glow */
+  .gold-glow {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+  }
+  .gold-glow-lg {
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.25);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.2) 50%, rgba(212,175,55,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8860B;
+}
+
+/* ===================================
+   FIXED HEADER & HERO SECTION STYLES
+   =================================== */
+.main-header {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-header.scrolled {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.hero-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+}
+
+.hero-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .hero-overlay-container {
+        padding: 0 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-overlay-container {
+        padding: 0 3rem;
+    }
+}
+
+@media (min-width: 1536px) {
+    .hero-overlay-container {
+        padding: 0 4rem;
+    }
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 760px;
+    position: relative;
+    z-index: 20;
+    margin-left: 0;
+    padding: 1rem 0;
+}
+
+@media (min-width: 768px) {
+    .hero-content {
+        width: 58%;
+        margin-left: 4%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .hero-content {
+        width: 52%;
+        margin-left: 6%;
+    }
+}
+
+@media (min-width: 1536px) {
+    .hero-content {
+        width: 48%;
+        margin-left: 8%;
+    }
+}
+
+.hero-kicker {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 12px;
+}
+
+.hero-title {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.8rem, 3.2vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+.text-gradient-gold {
+    background: linear-gradient(to right, #eab308, #d97706, #b45309);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #4b5563;
+    margin-top: 24px;
+    line-height: 1.6;
+}
+
+.btn-premium-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    padding: 14px 32px;
+    background: linear-gradient(to right, #eab308, #d97706);
+    color: #ffffff;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-premium-gold:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(to right, #facc15, #ea580c);
+    box-shadow: 0 14px 20px -3px rgba(234, 179, 8, 0.5);
+    color: #ffffff;
+}
+
+/* Completely hide default scrollbars across browsers; scroll progress line is rendered at top */
+html, body, * {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none !important; /* Firefox */
+}
+
+::-webkit-scrollbar {
+    display: none !important; /* Chrome, Safari, Opera */
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
+}
+
+/* Modern Hover Effects & Card Animations */
+.glass-card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow {
+    transition: all 0.3s ease;
+}
+.hover-glow:hover {
+    box-shadow: 0 0 25px rgba(217, 119, 6, 0.35);
+}
+
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* No Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile Screen Adaptations & 100% Responsiveness */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .hero-overlay-container {
+        padding: 0 16px;
+        justify-content: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+        padding-top: 45px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.75rem !important;
+        line-height: 1.25 !important;
+    }
+
+    .btn-premium-gold {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        text-align: center !important;
+        font-size: 0.95rem !important;
+    }
+}
+
